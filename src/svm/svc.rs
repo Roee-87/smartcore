@@ -126,7 +126,7 @@ pub struct SVC<'a, TX: Number + RealNumber, TY: Number + Ord, X: Array2<TX>, Y: 
     classes: Option<Vec<TY>>,
     instances: Option<Vec<Vec<TX>>>,
     #[cfg_attr(feature = "serde", serde(skip))]
-    parameters: Option<&'a SVCParameters<TX, TY, X, Y>>,
+    pub parameters: Option<&'a SVCParameters<TX, TY, X, Y>>,
     w: Option<Vec<TX>>,
     b: Option<TX>,
     phantomdata: PhantomData<(X, Y)>,
