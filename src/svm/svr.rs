@@ -105,9 +105,11 @@ pub struct SVRParameters<T: Number + FloatNumber + PartialOrd> {
 /// Epsilon-Support Vector Regression
 pub struct SVR<'a, T: Number + FloatNumber + PartialOrd, X: Array2<T>, Y: Array1<T>> {
     instances: Option<Vec<Vec<f64>>>,
-    #[cfg_attr(feature = "serde", serde(skip_deserializing))]
-    //made parameters public so that parameters can later be updated afer deserialization
-    pub parameters: Option<&'a SVRParameters<T>>,
+    #[cfg_attr(
+        all(feature = "serde", target_arch = "wasm32"),
+        serde(skip)
+    )]
+    parameters: Option<&'a SVRParameters<T>>,
     w: Option<Vec<T>>,
     b: T,
     phantom: PhantomData<(X, Y)>,
