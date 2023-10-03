@@ -103,7 +103,7 @@ pub struct SVCParameters<TX: Number + RealNumber, TY: Number + Ord, X: Array2<TX
     /// The kernel function.
     #[cfg_attr(
         all(feature = "serde", target_arch = "wasm32"),
-        serde(skip_serializing, skip_deserializing)
+        serde(skip)
     )]
     pub kernel: Option<Box<dyn Kernel>>,
     /// Unused parameter.
